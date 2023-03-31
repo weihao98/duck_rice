@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>576</y>
+      <w>184</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>menuItems
+--
+item_id (int auto-increment) PK
+name (char[100])
+price (float)
+ordered_count (int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>360</y>
+      <w>200</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>customer
+--
+phone_no (int) UNQIUE PK
+no_of_visits (int)
+last_visit (datetime)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>488</x>
+      <y>360</y>
+      <w>256</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>cart
+--
+cart_id (int auto-increment) UNQIUE PK
+table_id (int)
+phone_no (int) FK reference customer
+start_time (datetime)
+end_time (datetime)
+duration (int mins)
+total_amount (float)
+is_it_paid (bool)
+coupon_discount (int)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>120</y>
+      <w>192</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>coupon
+--
+coupon_id (int auto-increment) PK
+name (char[100])
+valid_from (datetime)
+valid_till (datetime)
+discount_percent (float 1-100)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>408</y>
+      <w>144</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1 have &gt; *</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>360</y>
+      <w>248</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>order
+--
+order_id (int auto-increment) UNIQUE PK
+item_id (int) FK reference menuItem
+cart_id (int) FK reference cart_id
+name (char[100]) FK reference menuItems
+price (float) 
+quantity (int)
+ordered_time (datetime)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>736</x>
+      <y>408</y>
+      <w>144</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1 have &gt; *</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>488</y>
+      <w>24</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>128</y>
+      <w>384</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>users
+--
+id (int auto-increment) PK
+profile (char[100]) CONSTRAINT : "manager", "owner", "admin", "staff"
+username (char[100])
+password (char[100])
+grant_view_statistics (bool)
+grant_view_edit_cart (bool)
+grant_view_edit_accounts (bool)
+grant_view_edit_menu (bool)
+grant_view_edit_coupon (bool)</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,108 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap" rel="stylesheet"> 
+<title>Welcome {{username}}</title>
+  <style>
+body {
+background-image: url("static/element-07.png");	  
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+text-align: center;
+font-family: 'Roboto Slab', serif;
+}
+
+.username {
+font-weight: bold;
+font-size: 40px;
+}
+
+.logout-btn{
+position: absolute;
+top: 20px;
+right: 50px;
+font-size: 20px;
+}
+
+        .form-inline {
+              display: inline-block;
+              flex-flow: row wrap;
+              align-items: center;
+
+          }
+
+.form-inline button {
+background-color: white;
+border: none;
+color: black;
+padding: 25px 40px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 0px 60px;
+border-radius: 8px;
+width: 25%;
+cursor: pointer;
+}
+
+.form-inline button:hover {
+background-color: gainsboro;
+}
+
+          .boxed {
+              border: 2px solid black;
+              width: 1000px;
+              margin: auto;
+              padding: 10px;
+          }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="logout-btn">
+    Welcome!
+    <div class="username">
+      {{username}}
+    </div>
+    <a href="{{ url_for('logOut')}}">
+      <button type="button" class="btn btn-outline-dark">
+        Logout
+      </button>
+    </a>
+  </div>
+
+{% with messages = get_flashed_messages() %} <!-- check if there's messages to be displayed -->
+  {% if messages %}
+    {% for msg in messages %}
+       <h1>{{msg}}</h1>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+  <form class="form-inline" action = "" method="POST">
+    <button class="button-84" id="b1" name = "button_type" value = "b1" style="width:250px; height:100px;">Hourly spending </button>
+    <button class="button-84" id="b2" name = "button_type" value = "b2" style="width:250px; height:100px;" >Daily spending </button>
+    <button class="button-84" id="b3" name = "button_type" value = "b3" style="width:250px; height:100px;">Weekly spending </button>
+    <br /><br />
+    <button class="button-84" id="b4" name = "button_type"  value = "b4" style="width:250px; height:100px;">Hourly frequency/pattern </button>
+    <button class="button-84" id="b5" name = "button_type"  value = "b5" style="width:250px; height:100px;">Daily  frequency/pattern </button>
+    <button class="button-84" id="b6" name = "button_type"  value = "b6" style="width:250px; height:100px;">Weekly frequency/pattern </button>
+    <br /><br />
+    <button class="button-84" id="b7" name = "button_type"  value = "b7" style="width:250px; height:100px;">Hourly preferences </button>
+    <button class="button-84" id="b8" name = "button_type"  value = "b8" style="width:250px; height:100px;">Daily preferences </button>
+    <button class="button-84" id="b9" name = "button_type"  value = "b9" style="width:250px; height:100px;">Weekly preferences </button>
+
+    <br /><br />
+  </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap" rel="stylesheet"> 
+<title>Welcome!</title>
+</head>
+
+<body>
+    <style>
+body {
+background-image: url("../static/element-18.png");	  
+background-repeat: no-repeat;
+background-size: cover;
+text-align: center;
+font-family: 'Roboto Slab', serif;
+}
+
+.home-btn{
+	padding: 30px;
+	float: left;
+}
+
+.logout-btn{
+	color: black;
+	position: absolute;
+	top: 20px;
+	right: 50px;
+	font-size: 20px;
+}
+.username {
+        font-weight: bold;
+        font-size: 40px;
+      }
+.heading{
+	position: absolute; left: 0 ;
+	padding-top: 200 ;
+	padding-left: 200;
+}
+
+h2{
+	font-size :20px;
+	font-weight: 300;
+}
+h1{
+	font-weight: 700;
+}
+      
+        .form-inline {
+              display: inline-block;
+              flex-flow: row wrap;
+              align-items: center;
+              width : 60%;
+          }
+      
+input[type=text] {
+	width: 60%;
+	padding: 15px;
+	margin: 5px 0 20px 0;
+	border: none;
+	border-radius: 30px;
+	background: white;
+
+}
+::placeholder{
+	font-weight: 700;
+}
+
+.form-inline button {
+          padding: 15px;
+          margin: 5px 0 15px 0;
+          border-color: rgb(255, 255, 255);
+          background: #3C3C3C;
+          color: white;
+          border-radius: 30px;
+          font-weight: 700;
+        }
+        .form-inline button:hover {
+          background: white;
+          color: black;
+        }
+      
+          .boxed {
+              border: 2px solid black;
+              width: 1000px;
+              margin: auto;
+              padding: 10px;
+          }
+          table{
+          background-color: white;
+          border-collapse: collapse;
+          margin: auto;
+          width: 100%;
+          text-align: center;
+        }
+        th{
+          padding: 10px;
+        }
+        td{
+          border: 1px solid black;
+          padding: 10px;
+        }
+        tr{
+          border: 1px solid black;
+        }
+
+
+        </style>
+
+
+
+{% with messages = get_flashed_messages() %} <!-- check if there's messages to be displayed -->
+  {% if messages %}
+    {% for msg in messages %}
+       <h1>{{msg}}</h1>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<a class="home-btn" href="{{ url_for('staff')}}">
+	<img alt="Home" src="../static/element-10.png"/>
+  </a>
+  <div class="logout-btn">
+	Welcome!
+	<div class="username">
+	  {{username}}
+	</div>
+	<a href="{{ url_for('logOut')}}">
+	  <button type="button" class="btn btn-outline-dark">
+		Logout
+	  </button>
+	</a>
+  </div>
+
+  <!--
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="{{ url_for('logOut')}}">Logout</a>
+  </nav>
+
+
+  <button style="padding: 7px 15px;
+  margin: 35px;
+  background-color: dodgerblue;
+  color: white;
+  border: 1px white;
+  cursor: pointer;" type="button" id="button_back" name="button_type" value="button_back" onclick="button_back()">Back</button>
+-->
+<br><br>
+<h1 class="heading">View Cart</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+  <form class="form-inline"  action="#" method="POST">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <!-- Button trigger modal -->
+
+
+
+  <input type="text" placeholder="Search cart id" name="search_cart_id" id="textbox" />
+  <div class="btn-search"><button id="button_search" name = "button_type" value = "button_search" onclick="checkEmpty()"> Search </button></div>
+  <br> <br><br>
+  <h2>To view orders of a cart, click on the cart details</h2>
+  
+ 
+
+  <table>
+    <tr>
+      <th>cart id</th>
+      <th>table id</th>
+      <th>phone number</th>
+      <th>start time</th>
+    </tr>
+    {% for n in data %}
+    <a href="#">
+    <tr id="{{n[0]}}" onclick="getSelectedCartId(this.id)" data-toggle="modal" data-target="#exampleModal" >
+
+      <td>{{n[0]}}</td>
+      <td>{{n[1]}}</td>
+      <td>{{n[2]}}</td>
+      <td>{{n[3]}}</td>
+
+    </tr>
+  </a>
+    {% endfor %}
+  </table>
+
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm cart id</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+         </div>
+         <div class="modal-body">
+          <br>
+          <text> Confirm display orders for:</text>
+          <input style="border:0;width:100px" id="cart_id" name="cart_id" readonly></input>
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="button_submit" name = "button_type" value = "button_submit">Confirm</button>
+         </div>
+       </div>
+     </div>
+   </div>
+  </form>
+  <script>
+
+    function getSelectedCartId(clicked_id)
+    {
+      var selected_id = clicked_id
+      console.log("Test in getSelectedCartId()")
+      console.log("selected cart id is " + selected_id)
+      document.getElementById("cart_id").value = selected_id
+
+    }
+
+    function button_back(){
+      location.href="{{ url_for('staff')}}";
+    }
+    function checkEmpty(){
+      if(document.getElementById('textbox').value == ''){
+          alert('Please enter cart id before searching');
+          event.preventDefault();
+      }
+    }
+  </script>
+</body>
+
+</html>

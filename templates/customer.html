@@ -1,0 +1,173 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap" rel="stylesheet">
+<title>Welcome!</title>
+</head>
+
+<body>
+  <style>
+    body {
+    background-image: url("static/element-16.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    }
+    .home-btn{
+        left: 20px;
+        top: 20px;
+        position: absolute;
+      }
+    .heading{
+        position: absolute; left: 0 ;
+        padding-top: 100 ;
+        padding-left: 150;
+      }
+      h2{
+        font-size :23px;
+        font-weight: 700;
+      }
+      h1{
+        font-weight: 700;
+      }
+      h3{
+        position: absolute;
+        top: 20px;
+        right: 50px;
+        font-size: 20px;
+        font-weight: 300;
+      }
+      span{
+        font-size :23px;
+        font-weight: 700;
+      }
+    .form-inline {
+    display: inline-block;
+    flex-flow: row wrap;
+    align-items: right;
+    }
+
+    .form-inline input {
+    margin: 20px 10px;
+    padding: 3px;
+    }
+
+    .form-inline button {
+    background-color: white; 
+    border: none;
+    color: black;
+    padding: 25px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    }
+
+    .form-inline button:hover {
+    background-color: gainsboro;
+    }
+
+    .boxed {
+    border: 2px solid black;
+    width: 1000px;
+    margin: auto;
+    padding: 10px;
+    }
+    table{
+          background-color: white;
+          border-collapse: collapse;
+          margin: auto;
+
+          text-align: center;
+          position: absolute; 
+          right:70px;
+          top: 500px;
+
+
+        }
+        th{
+          padding: 10px;
+        }
+        td{
+          border: 1px solid black;
+          padding: 10px;
+        }
+        tr{
+          border: 1px solid black;
+        }
+    </style>
+
+    <img  class="home-btn" alt="Home" src="../static/element-10.png"/>
+
+<h3>
+  cartId: <span>{{ cartId }}</span>
+  <br>
+  tableId: <span>{{ tableId }}</span>
+</h3>
+<br><br><br><br><br><br>
+<h1 class="heading">Customer Page</h1>
+
+  <br><br><br><br><br><br><br>
+  <form class="form-inline" action = "#" method="POST">
+    <button type="submit" id="b1" type="button" class="btn btn-primary" name="button_type" value="b1">Add Order</button>
+    <button type="submit" id="b2" type="button" class="btn btn-primary" name="button_type" value="b2">Edit Order</button>
+    <button type="submit" id="b3" type="button" class="btn btn-primary" name="button_type" value="b3">Delete Order</button>
+    <button type="submit" id="b4" type="button" class="btn btn-primary" name="button_type" value="b4">Payment</button>
+  </form>
+{% if session.get("currentorders", "") != "" %}
+<table id="cust_cart">
+      <tr>
+          <th>Order Id</th>
+          <th>Item Id</th>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total Cost</th>
+      </tr>
+
+      {% for i in range((session.get("currentorders" , [] ))|length) %}
+
+          <tr>
+              <td><input readonly  name="order_id_old[]" value="{{ session.get('currentorders' , [] )[i][4] }}"></td>
+              <td><input readonly  name="item_id_old[]" value="{{ session.get('currentorders' , [] )[i][0] }}"></td>
+              <td><input readonly  style="background-color : black; color:white; " name="item_name_old[]" value="{{ session.get('currentorders' , [] )[i][1] }}">  </td>
+              <td><input readonly min="1" type="number"  name="item_quantity_old[]" value="{{ session.get('currentorders' , [] )[i][2] }}">  </td>
+              <td><input readonly  name ="price_per_item" value="{{ session.get('currentorders' , [] )[i][5] }}">  </td>
+              <td><input readonly  name ="tot_cost_per_item" value="{{ session.get('currentorders' , [] )[i][6] }}">  </td>
+              
+          </tr>
+
+      {% endfor %}
+<br><br>
+</table>
+
+{% endif %}
+
+
+  <div class="bottomright">
+    {% with messages = get_flashed_messages() %} <!-- check if there's messages to be displayed -->
+        {% if messages %}
+            {% for msg in messages %}
+                <h1>{{msg}}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script>
+    //set item to dollars
+    function calculateTotal() {
+
+    }
+  </script>
+</body>
+</html>
